@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import BookCover from '@/components/BookCover';
@@ -10,14 +9,12 @@ import { ArrowDown } from 'lucide-react';
 
 const Index = () => {
   const [reviews, setReviews] = useState<ReviewData[]>(() => {
-    // Try to load reviews from localStorage
     const savedReviews = localStorage.getItem('bookReviews');
     return savedReviews ? JSON.parse(savedReviews) : [];
   });
   
   const [showReviewForm, setShowReviewForm] = useState(false);
   
-  // Save reviews to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('bookReviews', JSON.stringify(reviews));
   }, [reviews]);
@@ -26,7 +23,6 @@ const Index = () => {
     setReviews(prevReviews => [newReview, ...prevReviews]);
     setShowReviewForm(false);
     
-    // Scroll to reviews section
     const reviewsSection = document.getElementById('reviews-section');
     if (reviewsSection) {
       reviewsSection.scrollIntoView({ behavior: 'smooth' });
@@ -47,7 +43,6 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
       
-      {/* Hero Section */}
       <section className="pt-28 pb-20 px-4">
         <div className="container max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -100,7 +95,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Book Excerpt */}
       <section id="book-excerpt" className="py-20 px-4 bg-gray-50">
         <div className="container max-w-4xl mx-auto">
           <div className="text-center mb-12 animate-fade-in">
@@ -131,7 +125,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Review Stats Section */}
       <section id="reviews-section" className="py-20 px-4">
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-12 animate-fade-in">
@@ -150,7 +143,6 @@ const Index = () => {
             <ReviewStats reviews={reviews} />
           </div>
           
-          {/* Review Form Section - conditionally rendered */}
           {showReviewForm && (
             <div id="review-form" className="mb-16">
               <ReviewForm onSubmitReview={handleSubmitReview} />
@@ -172,30 +164,37 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Footer */}
       <footer className="py-10 px-4 bg-book-secondary text-white">
         <div className="container max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-xl font-bold">
-                Book<span className="text-book-primary">Review</span>
-              </h3>
-              <p className="text-gray-300 mt-2">
-                © {new Date().getFullYear()} All rights reserved.
-              </p>
+          <div className="text-center">
+            <div className="mb-6">
+              <div className="bg-orange-500 text-white inline-block px-10 py-4 text-2xl font-bold uppercase tracking-wider mx-auto rounded">
+                REVIEW THE BOOK
+              </div>
             </div>
             
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                Contact
-              </a>
+            <h3 className="text-lg font-medium mb-6">
+              HURRY! STOCK OF THIS BOOK AS OF MARCH 2ND IS LOW
+            </h3>
+            
+            <div className="flex justify-center mb-4">
+              <div className="flex space-x-1 w-full max-w-md">
+                {Array(24).fill(0).map((_, i) => (
+                  <div 
+                    key={i} 
+                    className={`h-4 flex-1 ${i < 23 ? 'bg-gray-600' : 'bg-green-500'}`}
+                  />
+                ))}
+              </div>
             </div>
+            
+            <button className="text-gray-300 hover:text-white transition-colors">
+              Read More
+            </button>
+            
+            <p className="text-gray-300 mt-6">
+              © {new Date().getFullYear()} All rights reserved.
+            </p>
           </div>
         </div>
       </footer>

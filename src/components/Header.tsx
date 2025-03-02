@@ -6,7 +6,7 @@ const Header = () => {
   const [adminKeySequence, setAdminKeySequence] = useState<string[]>([]);
   const navigate = useNavigate();
   
-  const SECRET_SEQUENCE = ['a', 'd', 'm', 'i', 'n'];
+  const SECRET_SEQUENCE = ['e', 'l', 'e', 'v', 'a', 't', 'e', 'h', 'i', 'g', 'h', 'e', 'r', '@', '1', '2', '3'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +34,7 @@ const Header = () => {
       if (adminKeySequence.length > 0 && adminKeySequence.length < SECRET_SEQUENCE.length) {
         setAdminKeySequence([]);
       }
-    }, 2000);
+    }, 5000);
     
     return () => clearTimeout(timer);
   }, [adminKeySequence, navigate]);
