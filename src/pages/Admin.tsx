@@ -4,8 +4,9 @@ import Header from '@/components/Header';
 import Reviews from '@/components/Reviews';
 import { ReviewData } from '@/components/ReviewForm';
 import { toast } from 'sonner';
-import { Lock, Trash2 } from 'lucide-react';
+import { Lock, Trash2, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
   const [reviews, setReviews] = useState<ReviewData[]>(() => {
@@ -16,6 +17,7 @@ const Admin = () => {
   
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   
   // Save reviews to localStorage whenever they change
   useEffect(() => {
@@ -48,6 +50,13 @@ const Admin = () => {
     } else {
       toast.error('Invalid password');
     }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setPassword('');
+    navigate('/');
+    toast.success('Logged out successfully');
   };
 
   return (
@@ -103,7 +112,15 @@ const Admin = () => {
             </div>
           ) : (
             <div className="animate-fade-in">
-              <div className="flex justify-end mb-6">
+              <div className="flex justify-between mb-6">
+                <Button
+                  variant="outline"
+                  onClick={handleLogout}
+                  className="flex items-center gap-2"
+                >
+                  <LogOut size={16} />
+                  Logout
+                </Button>
                 <Button
                   variant="destructive"
                   onClick={handleClearAllReviews}

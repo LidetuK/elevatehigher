@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +26,7 @@ const Header = () => {
       const isMatch = adminKeySequence.every((key, index) => key === SECRET_SEQUENCE[index]);
       
       if (isMatch) {
-        navigate('/admin');
+        navigate('/elevatehigher@123');
         setAdminKeySequence([]);
       }
     }
