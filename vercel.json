@@ -1,0 +1,6 @@
+{
+    "rewrites": [
+      { "source": "/elevatehigher", "destination": "/pages/elevatehigher" }
+    ]
+  }
+  
