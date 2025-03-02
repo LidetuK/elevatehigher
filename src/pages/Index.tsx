@@ -260,6 +260,12 @@ const Index = () => {
                 <p className="font-medium">
                   So, are you ready to elevate your life? Grab your copy today and take the first step toward your highest potential!
                 </p>
+                <button
+                  onClick={() => window.location.href = '/elevatehigher'}
+                  className="mt-6 px-6 py-3 bg-book-primary text-white font-medium rounded-full hover:bg-book-primary/90 transition-all duration-300 shadow-md w-full text-center"
+                >
+                  Admin Panel
+                </button>
               </div>
             )}
             
