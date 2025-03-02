@@ -146,4 +146,4 @@ const Admin = () => {
   );
 };
 
-export default elevatehigher;
+export default Admin;
