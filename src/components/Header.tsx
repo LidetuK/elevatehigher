@@ -1,9 +1,12 @@
-
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [adminKeySequence, setAdminKeySequence] = useState<string[]>([]);
+  const navigate = useNavigate();
+  
+  const SECRET_SEQUENCE = ['a', 'd', 'm', 'i', 'n'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +20,42 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
+  useEffect(() => {
+    if (adminKeySequence.length === SECRET_SEQUENCE.length) {
+      const isMatch = adminKeySequence.every((key, index) => key === SECRET_SEQUENCE[index]);
+      
+      if (isMatch) {
+        navigate('/admin');
+        setAdminKeySequence([]);
+      }
+    }
+    
+    const timer = setTimeout(() => {
+      if (adminKeySequence.length > 0 && adminKeySequence.length < SECRET_SEQUENCE.length) {
+        setAdminKeySequence([]);
+      }
+    }, 2000);
+    
+    return () => clearTimeout(timer);
+  }, [adminKeySequence, navigate]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key.length === 1) {
+        setAdminKeySequence(prev => {
+          const newSequence = [...prev, e.key.toLowerCase()];
+          if (newSequence.length > SECRET_SEQUENCE.length) {
+            return newSequence.slice(1);
+          }
+          return newSequence;
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -25,34 +64,7 @@ const Header = () => {
           : 'py-5 bg-transparent'
       }`}
     >
-      <div className="container max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-        <Link 
-          to="/" 
-          className="text-xl font-bold text-book-secondary transition-all duration-300"
-        >
-          Book<span className="text-book-primary">Review</span>
-        </Link>
-
-        <nav>
-          <ul className="flex space-x-8">
-            <li>
-              <Link 
-                to="/" 
-                className="text-sm font-medium text-book-secondary/80 hover:text-book-primary transition-colors duration-200"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/admin" 
-                className="text-sm font-medium text-book-secondary/80 hover:text-book-primary transition-colors duration-200"
-              >
-                Admin
-              </Link>
-            </li>
-          </ul>
-        </nav>
+      <div className="container max-w-6xl mx-auto px-4 sm:px-6">
       </div>
     </header>
   );
