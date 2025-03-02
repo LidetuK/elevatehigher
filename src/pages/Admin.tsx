@@ -99,7 +99,7 @@ const Admin = () => {
                     className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-book-primary/50 transition-all duration-200"
                     placeholder="Enter admin password"
                   />
-                  <p className="text-xs text-gray-500 mt-1">Hint: Use "admin123" for this demo</p>
+                  <p className="text-xs text-gray-500 mt-1"></p>
                 </div>
                 
                 <Button 

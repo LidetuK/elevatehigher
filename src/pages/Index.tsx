@@ -54,11 +54,11 @@ const Index = () => {
                 Featured Book
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-book-secondary mb-6 leading-tight">
-                "Sell Like Crazy"
-                <span className="block text-book-primary mt-2">by Sabri Suby</span>
+                "Elevate Higher"
+                <span className="block text-book-primary mt-2">by Resk'Que</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
-                The bestselling book that reveals the marketing secrets to generating countless leads, sales, and profits for your business.
+              The bestselling book that unveils the secrets to unlocking limitless growth, success, and breakthroughs in every area of your life.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -79,8 +79,8 @@ const Index = () => {
             
             <div className="lg:w-1/2 flex justify-center lg:justify-end">
               <BookCover 
-                title="Sell Like Crazy" 
-                author="Sabri Suby" 
+                title="Elevate Higher" 
+                author="Resk'Que" 
                 className="w-80 md:w-96"
               />
             </div>
@@ -108,21 +108,21 @@ const Index = () => {
               What Makes This Book Special
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover the proven system that has generated over 1.35 billion dollars in sales for businesses worldwide.
+            Uncover the powerful strategies that have helped countless individuals break barriers, achieve success, and transform their lives.
             </p>
           </div>
           
           <div className="glassmorphism p-8 rounded-xl mb-12 animate-scale-in">
             <p className="text-xl text-book-secondary font-medium italic mb-6 leading-relaxed">
-              "Possibly the most controversial marketing and sales book for the general public ever written..."
+            "Possibly the most eye-opening and transformative personal growth book ever written..."
             </p>
             
             <p className="text-gray-600 mb-6">
-              If you haven't heard of Sabri Suby before - let's give you a little background information. In the past few years, he's gone from cold calling potential customers from his bedroom to founder of King Kong, Australia's fastest-growing digital marketing agency which now boasts a multi-million-dollar turnover.
+            If you haven't heard of Resk'que before, here's what you need to know—through years of experience and a relentless pursuit of excellence, Resk'que has developed a proven system to help individuals elevate their mindset, overcome limitations, and unlock their highest potential.
             </p>
             
             <p className="text-gray-600">
-              Sabri is not just an advisor to billion-dollar brands and thousands of SMEs but by applying the system he describes in 'Sell Like Crazy', he's generated over 1.33 billion dollars in sales for his agency and his clients.
+            By applying the principles outlined in Elevate Higher, countless readers have reshaped their futures, achieving remarkable success in their personal and professional lives. Now, it's your turn to rise above and reach new heights.
             </p>
           </div>
         </div>
@@ -138,7 +138,7 @@ const Index = () => {
               What Readers Are Saying
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Honest reviews from readers who have applied the principles from "Sell Like Crazy" in their businesses.
+            Genuine testimonials from readers who have implemented the principles of Elevate Higher to transform their mindset, achieve personal breakthroughs, and unlock new levels of success.
             </p>
           </div>
           
@@ -171,9 +171,13 @@ const Index = () => {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-6">
-              <div className="bg-orange-500 text-white inline-block px-10 py-4 text-2xl font-bold uppercase tracking-wider mx-auto rounded">
-                REVIEW THE BOOK
-              </div>
+            <div
+  onClick={scrollToReviewForm}  // The function to handle the click event
+  className="bg-orange-500 text-white inline-block px-10 py-4 text-2xl font-bold uppercase tracking-wider mx-auto rounded cursor-pointer hover:bg-orange-400 transition-all duration-300"
+>
+  REVIEW THE BOOK
+</div>
+
             </div>
             
             <h3 className="text-lg font-medium mb-6">
