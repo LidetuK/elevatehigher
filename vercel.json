@@ -1,6 +1,13 @@
 {
-    "rewrites": [
-      { "source": "/elevatehigher", "destination": "/pages/elevatehigher" }
+    "routes": [
+      { 
+        "src": "/",
+        "dest": "/",
+        },
+        {
+            "src": "/elevatehigher",
+            "dest": "/"
+        }
     ]
   }
   
